@@ -24,15 +24,7 @@ export default function Home({navigation}) {
     AsyncStorage.getItem('likedProductList').then(res => {
       let ary = JSON.parse(res);
       if (ary) {
-        console.log('likedProductList', ary);
         setProductList(ary);
-      }
-    });
-
-    AsyncStorage.getItem('list').then(res => {
-      let ary = JSON.parse(res);
-      if (ary) {
-        // setProductList(ary);
       }
     });
   }, []);
@@ -77,7 +69,6 @@ export default function Home({navigation}) {
         : null;
     });
     setProductList(array);
-    AsyncStorage.setItem('list', JSON.stringify(array));
   };
 
   const onPressDecrease = index => {
@@ -145,7 +136,6 @@ export default function Home({navigation}) {
           keyExtractor={(item, index) => index.toString()}
           data={productList}
           renderItem={({item, index}) => {
-            // console.log(item?.isQuantity);
             return (
               <View style={{flex: 1, paddingTop: 5}}>
                 <Product
